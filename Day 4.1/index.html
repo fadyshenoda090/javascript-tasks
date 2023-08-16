@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>button</title>
+  </head>
+  <body>
+    <button onclick="openwindow()">open me</button>
+    <!-- <button onclick="closeWin()">close me</button> -->
+
+    <script>
+      function openwindow() {
+        var oben = open("Day 4.2/likes.html","_blank","screenX=100px,screenY=80px,width=350px,height=450px");
+        setTimeout(function () {
+          oben.close()
+          console.log("blabla");
+        }, 3000)
+      }
+      
+      // var newWindow;
+      // function openWin(){
+      //   newWindow=open("https://www.google.com","_blank","screenX=100px,screenY=80px,width=350px,height=450px")
+      // }
+      // function closeWin(){
+      //   newWindow.close()
+      // }
+    </script>
+  </body>
+</html>

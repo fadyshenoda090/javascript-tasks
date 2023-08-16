@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <style>
+        #container {
+            margin-top: 100px;
+            border-radius: 20px;
+            width:300px;
+            padding: 20px;
+            margin-left: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            background-color: brown;
+            color: bisque;
+            height: 150px;
+            text-justify: "inter-word";
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" onmouseenter="stop()" onmouseout="start()"></div>
+
+   <script>
+    var d;
+    //    function update(){
+    //     var date=new Date();
+    //     var hours=date.getHours();
+    //     var minutes=date.getMinutes();
+    //     var seconds=date.getSeconds();
+    //     var AmOrPm=hours >= 12 ? 'PM':'AM';
+    //     hours=hours%12;
+    //     hours=hours ? houres:12
+    //     var time=hours+':'+minutes+':'+seconds+AmOrPm;
+    //     var ele=document.getElementById("container");
+    //     ele.innerHTML=time;
+    // }
+    function update() {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+            var time = hours + ':' + minutes + ':' + seconds + ' ' + AmOrPm;
+            var ele = document.getElementById("container");
+            ele.innerHTML = time;
+        }
+    update()
+    function start(){
+         d=setInterval(update,1000)
+    }
+    start()
+    
+    function stop(){
+        clearInterval(d)
+    }
+   </script>
+</body>
+
+</html>

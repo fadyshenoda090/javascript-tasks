@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunger Fish</title>
+    <link rel="icon" type="image/x-icon" href="./images/fish.png">
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        #enemy1 {
+            width: 300px;
+            height: 150px;
+            position: relative;
+            animation-name: toleft;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audio">
+        <source src="./sounds/FF2.mp3" type="audio/mp3">
+    </audio>
+    <div id="score"> Your Score is :0</div>
+    <img src="./images/eater.gif" alt="eater" id="eater"
+        style="transform: rotate(0); ;position: absolute;left:1000px;top:100px" />
+    <img src="./images/enemyLeveltwo.gif" id="enemy1" style="right:-1500px;top:250px">
+
+    <button onclick="mouse()" id="b">mouse</button>
+
+    <script>
+        var eater = document.getElementById("eater");
+        var myaudio = document.getElementById("audio")
+        var enemy1 = document.getElementById("enemy1")
+
+
+        var arrayImage = [
+            "./images/r1.gif",
+            "./images/r2.gif",
+            "./images/r3.gif",
+            "./images/r4.gif",
+            "./images/r5.gif",
+            "./images/r6.gif",
+            "./images/turtleR.gif"
+        ]
+
+        var arrayImage2 = [
+
+            "./images/l1.gif",
+            "./images/l2.gif",
+            "./images/l3.gif",
+            "./images/l4.gif",
+            "./images/l5.gif",
+            "./images/l6.gif",
+            "./images/l7.gif",
+            "./images/jellyFishL.gif",
+        ]
+
+        // Create the food items dynamically
+        var food;
+        setInterval(function () {
+            var randomIndex = Math.floor(Math.random() * arrayImage.length)
+            food = document.createElement("img");
+            food.setAttribute("src", arrayImage[randomIndex]);
+            food.setAttribute("class", "food fr");
+            food.style.left = Math.floor(Math.random() * -5000) + "px";
+            food.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+            document.body.append(food);
+        }, 800)
+
+        var food2;
+        setInterval(function () {
+            var randomIndex = Math.floor(Math.random() * arrayImage2.length)
+            food2 = document.createElement("img");
+            food2.setAttribute("src", arrayImage2[randomIndex]);
+            food2.setAttribute("class", "food fl");
+            food2.style.right = Math.floor(Math.random() * -5000) + "px";
+            food2.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+            document.body.append(food2);
+        }, 800)
+
+        document.body.addEventListener("keydown", function (e) {
+            if (e.key == "ArrowRight") {
+                myaudio.play()
+                x = parseInt(eater.style.left);
+                eater.style.left = (x + 20) + "px";
+                eater.style.transform = "scaleX(1)";
+            } else if (e.key == "ArrowLeft") {
+                myaudio.play()
+                x = parseInt(eater.style.left);
+                eater.style.left = (x - 20) + "px";
+                eater.style.transform = "scaleX(-1)";
+            } else if (e.key == "ArrowUp") {
+                myaudio.play()
+                x = parseInt(eater.style.top);
+                eater.style.top = (x - 20) + "px";
+                eater.style.transform = "rotate(270deg)";
+
+            } else if (e.key == "ArrowDown") {
+                myaudio.play()
+                x = parseInt(eater.style.top);
+                eater.style.top = (x + 20) + "px";
+                eater.style.transform = "rotate(90deg)";
+            }
+        });
+
+
+        function mouse() {
+            document.body.addEventListener("mousemove", function (e) {
+                var eaterRect = eater.getBoundingClientRect();
+                var x = e.clientX - eaterRect.width / 2;
+                var y = e.clientY - eaterRect.height / 2;
+                eater.style.left = x + "px";
+                eater.style.top = y + "px";
+            });
+        }
+
+
+        var counter = 0
+        var heightz = eater.style.height=80
+        var widthz = eater.style.width 80
+        var interval = setInterval(checkCollision, 100);
+
+        function checkCollision() {
+            var foods = document.querySelectorAll(".food");
+
+            foods.forEach((foodItem) => {
+                const foodRect = foodItem.getBoundingClientRect();
+                const playerFishRect = eater.getBoundingClientRect();
+                if (
+                    foodRect.left < playerFishRect.right &&
+                    foodRect.right > playerFishRect.left &&
+                    foodRect.top < playerFishRect.bottom &&
+                    foodRect.bottom > playerFishRect.top
+                ) {
+                    foodItem.remove();
+                    var divc = document.getElementById("score");
+                    counter++;
+                    divc.innerHTML = "Your Score is:" + counter;
+                    eater.style.height = (heightz = heightz + 3) + "px"
+                    eater.style.width = (widthz = widthz + 3) + "px"
+                }
+            });
+
+            var EaterFishRect = eater.getBoundingClientRect();
+            var enemyOneRect = enemy1.getBoundingClientRect();
+            if (
+                EaterFishRect.left < enemyOneRect.right &&
+                EaterFishRect.right > enemyOneRect.left &&
+                EaterFishRect.top < enemyOneRect.bottom &&
+                EaterFishRect.bottom > enemyOneRect.top
+            ) {
+                if (eater.width && eater.height > enemy1.width && enemy1.height) {
+                    enemy1.remove();
+                    alert("congrates you've reached the final level")
+                    window.open("game.html", "_self")
+                    return;
+                }
+                if (eater.width && eater.height < enemy1.width && enemy1.height) {
+                    // Remove the eater if it's smaller than the enemy
+                    eater.remove();
+                    var f = confirm("game over, you want to play again?!");
+                    if (f == true) {
+                        window.open("levelTwo.html", "_self");
+                    } else {
+                        window.open("game.html", "_self");
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

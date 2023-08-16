@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="click1()">press me</button>
+    <script>
+      // function mintoHour(number)
+      // {
+      //     var hours=Math.floor(number/60)
+      //     return hours
+      // }
+      // console.log(mintoHour(200));
+
+      // var input=prompt("enter yor birthday yyyyy,mm,dd")
+      // var temp=parseInt(input)
+      // var dateOfBirth=new Date(temp)
+      // var weekDays=dateOfBirth.getDay()
+      // switch (weekDays) {
+      //     case 0:
+      //         alert("you were born on sunday")
+      //         break;
+      //     case 1:
+      //         alert("you were born on monday")
+      //         break;
+      //     case 2:
+      //         alert("you were born on tuesday")
+      //         break
+      //     case 3:
+      //     alert("you were born on wednesday")
+      //     break;
+      //     case 4:
+      //         alert("you were born on thursday")
+      //         break;
+      //     case 5:
+      //         alert("you were born on friday")
+      //         break;
+      //     case 6:
+      //         alert("you were born on saturday")
+      //         break;
+      //     default:
+      //         break;
+      // }
+    // var mobile = prompt("enter your phone number");
+    // var regex = new RegExp(/^0(11|10|15)[0-9]{8}/);
+    // while(regex.test(mobile)==false)
+    // {
+    //     var mobile=prompt("enter a valid number that starts with 011 or 010 or 015 and it must be 11 numbers")
+    // }
+    // alert(mobile)
+    // var email=prompt("enter your email")
+    // var empattern=new RegExp(/^[a-zA-z]+@[a-zA-z]+\.gov\.eg$/)
+    // while(empattern.test(email)==false)
+    // {
+    //   var email=prompt("please enter a valid email ")
+    // }
+    // alert("your email is : "+email)
+
+    var arr=["fady","mario","tadres","mena"]
+    var temparr=arr
+    function click1()
+    {
+      var rand=Math.floor(Math.random()*temparr.length)
+      alert(temparr[rand])
+      temparr.splice(rand,1)
+    }
+    // var game=["rock","paper","scissors"]
+    // var input=prompt("enter a choice from'rock,paper,scissors'")
+    // var randchoice=Math.floor(Math.random()*game.length)
+    // console.log(randchoice);
+    // if(input==game[randchoice])
+    // {
+    //   console.log("CPU "+game[randchoice])
+    //   console.log("you "+input)
+    //   alert("no winner")
+    // }
+    // else if(input=="rock" && game[randchoice]=="paper")
+    // {
+    //   console.log("CPU paper")
+    //   console.log("you "+input)
+    //   alert("CPU won")
+    // }
+    // else if(input=="rock" && game[randchoice]=="scissors")
+    // {
+    //   console.log("CPU scissors")
+    //   console.log("you "+input)
+    //   alert("you won")
+    // }
+    // else if(input=="scissors" && game[randchoice]=="paper")
+    // {
+    //   console.log("CPU paper")
+    //   console.log("you "+input)
+    //   alert("you won")
+    // }
+    // else if(input=="scissors" && game[randchoice]=="rock")
+    // {
+    //   console.log("CPU rock")
+    //   console.log("you "+input)
+    //   alert("CPU won")
+    // }
+    // else if(input=="paper" && game[randchoice]=="rock")
+    // {
+    //   console.log("CPU rock")
+    //   console.log("you "+input)
+    //   alert("you won")
+    // }
+    // else
+    // {
+    //   console.log("CPU scissors")
+    //   console.log("you "+input)
+    //   alert("CPU won")
+    // }
+    </script>
+</body>
+</html>

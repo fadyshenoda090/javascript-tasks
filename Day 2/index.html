@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function capitalize(str)
+      {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+      var firstFunction=prompt("enter a word")
+      var a=capitalize(firstFunction)
+
+      function plural(str)
+      {
+        if(str.charAt(str.length-1)== "y")
+        {
+          return str.slice(0, str.length - 1) +"ies"
+        }
+        else
+        {
+          return str+"s"
+        }
+      }
+      var secondFunction=prompt("enter word")
+      var b=plural(secondFunction)
+
+      function countChar(str)
+      {
+        var counter=0
+        for(i=0 ;i<str.length;i++)
+        {
+          if(str[i]=='e')
+          counter++
+        }
+        if(counter==0)
+        {
+          return -1
+        }
+        else
+        {
+          return counter
+        }
+      }
+      var thirdFunction=prompt("enter a word")
+      var c=countChar(thirdFunction)
+      alert(a+" ,"+b+" ,"+c)
+
+      function ordering(str) {
+        var students = ["Rehab", "Ahmed", "Hamed", "Mahmoud"];
+        students.sort();
+        var order = students.indexOf(str);
+        var position = order + 1;
+        return "your number is :" + position;
+      }
+      var studentName = prompt("enter your name");
+      alert(ordering(studentName));
+
+      function remove() {
+        var students = ["Rehab", "Ahmed", "Hamed", "Mahmoud"];
+        students.sort();
+        var finishedStudent = students.shift();
+        var theNext = students[0];
+        return ("the finished student is :" +finishedStudent + " the next studen is :" +theNext);
+      }
+      alert(remove());
+
+      function getOnlyEvens(numbers) 
+      {
+        var even= numbers.filter(function (ele,i)
+        {
+          return ele%2==0 && i%2==0
+        })
+        alert(even)
+      }
+      var userInput=prompt("please enter array elements separated by commas(,)")
+      var array=userInput.split(",")
+      getOnlyEvens(array)
+    </script>
+  </body>
+</html>
